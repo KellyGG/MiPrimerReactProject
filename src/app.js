@@ -8,6 +8,6 @@ console.log('App.js is running!');
     { id: "someid" },
     "Something new"
   );*/
-var template= <h1>Cambio 2 App</h1>;
+var template= <h1>Indecision App</h1>;
 var appRoot=document.getElementById('app');
 ReactDOM.render(template,appRoot);
