@@ -1,18 +1,20 @@
 console.log('App.js is running!');
 
-//JSX -Javascript XML
-
-
-/*var template = React.createElement(
-    "h1",
-    { id: "someid" },
-    "Something new"
-  );*/
+//create app object title/subtitle
+//user title/subtitle in the template
+//render template
   //JSX - Javascript XML
+
+  var app=
+  {
+   title:'My first project -Kelly',
+   subtitle:'Information:'
+
+  };
 var template=(
 <div>
-  <h1>Indecision App</h1>
-  <p> This is some info</p>
+  <h1>{app.title}</h1>
+  <p> {app.subtitle}</p>
   <ol>
     <li>Item one</li>
     <li>Item two</li>
@@ -21,13 +23,19 @@ var template=(
   </ol>
 </div>
 );
+var user=
+{
+name:'Kelly',
+age:25,
+Location: 'Medellin'
+};
 
 var templateTwo=
 (
   <div>
-    <h1>Kelly G</h1>
-    <p> Age: 25</p>
-    <p>Location:Medellin</p>
+    <h1>{user.name}</h1>
+    <p> Age: {user.age}</p>
+    <p>Location: {user.Location}</p>
   
   </div>
   )
@@ -39,4 +47,4 @@ var templateTwo=
 //Render templateTwo instead of template
 
 var appRoot=document.getElementById('app');
-ReactDOM.render(templateTwo,appRoot);
+ReactDOM.render(template,appRoot);
