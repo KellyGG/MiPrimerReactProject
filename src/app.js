@@ -1,20 +1,21 @@
 console.log('App.js is running!');
 
-//create app object title/subtitle
-//user title/subtitle in the template
-//render template
   //JSX - Javascript XML
 
+  //only render the subtitle (and p tag) if subtitle exist - logical and operator
+  //render new p tag - if options.length > 0 "Here are you options" "No options"
   var app=
   {
    title:'My first project -Kelly',
-   subtitle:'Information:'
+   subtitle:'Put your life in the hands:',
+   options:['One','Two']
 
   };
 var template=(
 <div>
   <h1>{app.title}</h1>
-  <p> {app.subtitle}</p>
+  {app.subtitle && <p>{app.subtitle}</p>}
+  <p>{app.options.length >0 ? 'Here are your options' : 'No options'}</p>
   <ol>
     <li>Item one</li>
     <li>Item two</li>
@@ -27,24 +28,31 @@ var user=
 {
 name:'Kelly',
 age:25,
-Location: 'Medellin'
+location:'Medellin'
+//location: 'Medellin'
 };
+function getLocation(location)
+{
+if(location)
+ {
 
+    return <p>Location: {location}</p>;
+ }
+ else
+ {
+    return undefined;
+ }
+}
 var templateTwo=
 (
   <div>
-    <h1>{user.name}</h1>
-    <p> Age: {user.age}</p>
-    <p>Location: {user.Location}</p>
+    <h1>{user.name ? user.name : 'NN'}</h1>
+    {(user.age && user.age >=18) && <p>Age: {user.age}</p> }
+    {getLocation(user.location)}
   
   </div>
   )
-//Create a templateTwo var JSX expression
-//div
-//h1 -> Kelly G
-//p-> Age: 25
-//p->Location:Medellin
-//Render templateTwo instead of template
+
 
 var appRoot=document.getElementById('app');
 ReactDOM.render(template,appRoot);

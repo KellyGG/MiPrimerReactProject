@@ -2,14 +2,14 @@
 
 console.log('App.js is running!');
 
-//create app object title/subtitle
-//user title/subtitle in the template
-//render template
 //JSX - Javascript XML
 
+//only render the subtitle (and p tag) if subtitle exist - logical and operator
+//render new p tag - if options.length > 0 "Here are you options" "No options"
 var app = {
   title: 'My first project -Kelly',
-  subtitle: 'Information:'
+  subtitle: 'Put your life in the hands:',
+  options: ['One', 'Two']
 
 };
 var template = React.createElement(
@@ -20,11 +20,15 @@ var template = React.createElement(
     null,
     app.title
   ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    app.subtitle
+  ),
   React.createElement(
     'p',
     null,
-    ' ',
-    app.subtitle
+    app.options.length > 0 ? 'Here are your options' : 'No options'
   ),
   React.createElement(
     'ol',
@@ -49,36 +53,38 @@ var template = React.createElement(
 var user = {
   name: 'Kelly',
   age: 25,
-  Location: 'Medellin'
+  location: 'Medellin'
+  //location: 'Medellin'
 };
+function getLocation(location) {
+  if (location) {
 
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  } else {
+    return undefined;
+  }
+}
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    user.name
+    user.name ? user.name : 'NN'
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     'p',
     null,
-    ' Age: ',
+    'Age: ',
     user.age
   ),
-  React.createElement(
-    'p',
-    null,
-    'Location: ',
-    user.Location
-  )
+  getLocation(user.location)
 );
-//Create a templateTwo var JSX expression
-//div
-//h1 -> Kelly G
-//p-> Age: 25
-//p->Location:Medellin
-//Render templateTwo instead of template
 
 var appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot);
