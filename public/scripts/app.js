@@ -50,41 +50,85 @@ var template = React.createElement(
     )
   )
 );
-var user = {
-  name: 'Kelly',
-  age: 25,
-  location: 'Medellin'
-  //location: 'Medellin'
-};
-function getLocation(location) {
-  if (location) {
+// const user=
+// {
+// name:'Kelly',
+// age:25,
+// location:'Medellin'
+// //location: 'Medellin'
+// };
+// function getLocation(location)
+// {
+// if(location)
+//  {
 
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  } else {
-    return undefined;
-  }
-}
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    user.name ? user.name : 'NN'
-  ),
-  user.age && user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  getLocation(user.location)
-);
+//     return <p>Location: {location}</p>;
+//  }
+//  else
+//  {
+//     return undefined;
+//  }
+// }
+// const templateTwo=
+// (
+//   <div>
+//     <h1>{user.name ? user.name : 'NN'}</h1>
+//     {(user.age && user.age >=18) && <p>Age: {user.age}</p> }
+//     {getLocation(user.location)}
+
+//   </div>
+//   )
+
+var count = 0;
+var addOne = function addOne() {
+  count = count + 1;
+  renderCounterApp();
+};
+
+var minusOne = function minusOne() {
+  count = count - 1;
+  renderCounterApp();
+};
+
+var reset = function reset() {
+  count = 0;
+  renderCounterApp();
+};
+
+//make button "-1" -setup minusOne function and register -log "minusOne"
+//Make reset button "reset" - setup reset function -log "reset"
+
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+
+var renderCounterApp = function renderCounterApp() {
+
+  var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      'Count: ',
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: addOne },
+      '+1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: minusOne },
+      '-1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      'reset'
+    )
+  );
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+renderCounterApp();
